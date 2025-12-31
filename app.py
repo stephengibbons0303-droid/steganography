@@ -41,6 +41,12 @@ st.markdown("""
         color: #f0f2f6 !important;
         font-family: 'Inter', sans-serif !important;
     }
+
+    /* Subheader sizing */
+    h2 {
+        font-size: 1.3rem !important;
+        margin-bottom: 0.5rem !important;
+    }
     
     /* Fix Sidebar Background to match Theme */
     [data-testid="stSidebar"] {

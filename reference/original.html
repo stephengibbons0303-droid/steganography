@@ -1,0 +1,51 @@
+<script src= "https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
+</script>
+
+
+<! –– four canvases to show 4 stages: image selected that will conceal - foreCan, image selected that will be hidden - hideCan, processed hidden image - hideCan, and processed revealed image  revealCan-->
+
+
+ <h1 style = "text-align:center;"> Steganography Exp</h1>
+<div style = "text-align:center;">  
+  
+<canvas id="foreCan"> 
+        </canvas>
+
+<canvas id="backCan"> 
+        </canvas>
+  
+<canvas id="hideCan"> 
+        </canvas>
+  
+<canvas id="revealCan"> 
+        </canvas>
+</div>  
+
+<p style = "text-align:center;"class="fb">
+  image to show
+<input type = "file" class="fore" id = "foreG"
+accept="image/*"  multiple="false" onchange="loadForegroundImage()"/>
+  
+  <input  id="dime1" type="button" value="Dimensions of show" onclick="fgDimensions()"/>
+<span id="fun1"></span>
+</p>
+  
+ 
+<p style = "text-align:center;"class="fb"> 
+  image to hide <input type = "file" id = "backG"
+accept="image/*" value="background" multiple="false" onchange="loadBackgroundImage()"/>
+   <input  id="dime1" type="button" value="Dimensions of hide" onclick="fgDimensions()"/>
+<span id="fun1"></span>
+</p>
+
+<p style = "text-align:center;" class="fb">
+<input type = "button" id = "sten" value= "Hide Image"onclick="doStenography()"/>
+
+<input type = "button" id = "download" value= "Download hidden image"onclick="download()"/>
+
+<input type = "button" id = "reveal" value= "Upload & Reveal hidden image"onclick="reveal()"/>
+</p>
+  
+<p style = "text-align:center;"class="fb">
+<input type = "button" id = "clear" value= "Clear Canvases"onclick="clearCanvas()"/>
+</p>

@@ -43,9 +43,11 @@ st.markdown("""
     }
 
     /* Subheader sizing */
-    h2 {
-        font-size: 1.3rem !important;
+    [data-testid="stSubheader"],
+    [data-testid="stSubheader"] * {
+        font-size: 1.2rem !important;
         margin-bottom: 0.5rem !important;
+        white-space: nowrap !important;
     }
     
     /* Fix Sidebar Background to match Theme */
@@ -157,14 +159,14 @@ with tab1:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("1. Cover Image (Foreground)")
+        st.subheader("1. Cover Image")
         cover_file = st.file_uploader("Upload the image that will be seen", type=['png', 'jpg', 'jpeg'], key="cover_up")
         if cover_file:
             cover_img = utils.load_image(cover_file)
             st.image(cover_img, use_column_width=True)
             
     with col2:
-        st.subheader("2. Secret Image (Background)")
+        st.subheader("2. Secret Image")
         hidden_file = st.file_uploader("Upload the image to hide", type=['png', 'jpg', 'jpeg'], key="hidden_up")
         if hidden_file:
             hidden_img = utils.load_image(hidden_file)

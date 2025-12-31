@@ -54,7 +54,7 @@ def encode_image(cover_img: Image.Image, hidden_img: Image.Image, n_bits: int = 
     # cover_cleared = (cover >> n_bits) << n_bits # Actually no, we want to clear the BOTTOM
     # JS: floor(pix/4)*4 -> clears bottom 2.  (11111100)
     # Using bitmask is safer/clearer
-    mask_cover = ~((1 << n_bits) - 1) 
+    mask_cover = 0xFF & (0xFF << n_bits) 
     cover_cleared = cover_arr & mask_cover
     
     # 2. Prepare hidden image

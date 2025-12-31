@@ -44,8 +44,9 @@ st.markdown("""
 
     /* Subheader sizing */
     h2 {
-        font-size: 1.3rem !important;
+        font-size: 1.2rem !important;
         margin-bottom: 0.5rem !important;
+        white-space: nowrap !important;
     }
     
     /* Fix Sidebar Background to match Theme */

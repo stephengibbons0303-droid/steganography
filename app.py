@@ -43,7 +43,8 @@ st.markdown("""
     }
 
     /* Subheader sizing */
-    h2 {
+    [data-testid="stSubheader"],
+    [data-testid="stSubheader"] * {
         font-size: 1.2rem !important;
         margin-bottom: 0.5rem !important;
         white-space: nowrap !important;

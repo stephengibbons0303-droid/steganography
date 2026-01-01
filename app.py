@@ -174,16 +174,20 @@ with tab1:
 
     if cover_file and hidden_file:
         st.markdown("---")
-        
+
+        # Password for encryption
+        password = st.text_input("🔑 Password (optional but recommended)", type="password", key="encode_password",
+                                  help="Encrypts the hidden image. Without password, hidden image may be visible at high bit settings.")
+
         # Use session state to persist the result across reruns (for download button)
         if 'steganography_result' not in st.session_state:
             st.session_state.steganography_result = None
-            
+
         if st.button("✨ Hide Image", type="primary"):
             try:
                 with st.spinner("Processing magic..."):
-                    # Process
-                    result_img = utils.encode_image(cover_img, hidden_img, n_bits)
+                    # Process with optional password
+                    result_img = utils.encode_image(cover_img, hidden_img, n_bits, password if password else None)
                     st.session_state.steganography_result = result_img
                     st.success("Image hidden successfully!")
             except Exception as e:
@@ -213,18 +217,21 @@ with tab1:
 with tab2:
     st.subheader("Upload an encoded image")
     st.info(f"💡 **Tip:** Ensure the 'Bits to Hide' slider (currently **{n_bits}**) matches the value used when this image was created!")
-    
+
     decode_file = st.file_uploader("Upload image to decode", type=['png', 'jpg', 'jpeg'], key="decode_up")
-    
+
     if decode_file:
         st.image(decode_file, caption="Encoded Image", width=300)
-        
+
+        # Password for decryption
+        decode_password = st.text_input("🔑 Password (if used during encoding)", type="password", key="decode_password")
+
         if st.button("🔍 Reveal Hidden Image", type="primary"):
             try:
                 with st.spinner("Decoding..."):
                     encoded_img = utils.load_image(decode_file)
-                    decoded_img = utils.decode_image(encoded_img, n_bits)
-                    
+                    decoded_img = utils.decode_image(encoded_img, n_bits, decode_password if decode_password else None)
+
                     st.success("Hidden image extracted!")
                     st.image(decoded_img, caption="Revealed Secret", use_column_width=True)
             except Exception as e:
